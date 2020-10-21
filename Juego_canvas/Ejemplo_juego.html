@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ejemplo juego</title>
+	<script type="text/javascript">
+let tablero, direccion;
+
+let teclas={
+    UP:38,
+    DOWN:40,
+    LEFT:37,
+    RIGHT:39
+};
+
+let fondo = {
+    imagenURL: "fondo.png",
+    imagenOK:false
+};
+
+let tifis={
+x:100,
+y:100,
+frenteURL: "diana-frente.png",
+atrasURL:"diana-atras.png",
+derURL:"diana-der.png",
+izqURL:"diana-izq.png",
+atrasOK:false,
+derOK:false,
+izqOK:false,
+frenteOK:false,
+velocidad: 10
+};
+
+let liz={
+    x:400,
+    y:250,
+    lizURL:"liz.png",
+    lizOK:false
+}
+
+function inicio(){
+
+    let canvas = document.getElementById("campo");
+    tablero = canvas.getContext("2d");
+
+    fondo.imagen = new Image();
+    fondo.imagen.src = fondo.imagenURL;
+    fondo.imagen.onload = confirmarFondo;
+
+    liz.liz = new Image();
+    liz.liz.src = liz.lizURL;
+    liz.liz.onload = confirmarLiz;
+
+    tifis.frente = new Image();
+    tifis.frente.src = tifis.frenteURL;
+    tifis.frente.onload = confirmarFrente;
+
+    tifis.atras = new Image();
+    tifis.atras.src = tifis.atrasURL;
+    tifis.atras.onload = confirmarAtras;
+
+    tifis.izq = new Image();
+    tifis.izq.src = tifis.izqURL;
+    tifis.izq.onload = confirmarIzq;
+
+    tifis.der = new Image();
+    tifis.der.src = tifis.derURL;
+    tifis.der.onload = confirmarDer;
+
+
+
+    document.addEventListener("keydown",teclado);
+}
+
+function teclado(datos){
+
+let bloqueo=0;
+
+let codigo=datos.keyCode;
+if(codigo==teclas.UP && tifis.y>=5 ){
+
+    if(tifis.x<140 && tifis.y==250)
+        bloqueo=1;
+
+    else if(tifis.x>=170 && tifis.x<=230 && tifis.y==250)
+        bloqueo=1;
+
+    else if(tifis.x>=130 && tifis.y==400)
+        bloqueo=1;
+
+    if(bloqueo==0)
+    tifis.y -= tifis.velocidad;
+}
+
+if(codigo==teclas.DOWN && tifis.y<445){
+
+    if(tifis.y==150 && tifis.x<140)
+    bloqueo=1;
+
+    else if(tifis.x>=120 && tifis.y==300)
+    bloqueo=1;
+
+
+    if(bloqueo==0)    
+    tifis.y += tifis.velocidad;        
+}
+
+if(codigo==teclas.LEFT && tifis.x>=0)
+{
+   if(tifis.x<=140 && tifis.y>=160 && tifis.y<=240)
+    bloqueo=1;
+
+   else if(tifis.x==240 && tifis.y<=240)
+    bloqueo=1;
+
+   if(bloqueo==0)
+    tifis.x -= tifis.velocidad;
+}
+
+if(codigo==teclas.RIGHT && tifis.x<=450)
+{
+    if(tifis.x==160 && tifis.y<250)
+        bloqueo=1;
+
+    if(tifis.x==110 && tifis.y>=310 && tifis.y<=390)
+        bloqueo=1;
+
+    if(bloqueo==0)    
+    tifis.x += tifis.velocidad;
+}
+
+direccion=codigo;
+dibujar();
+
+}
+
+function confirmarFondo(){
+    fondo.imagenOK=true;
+    dibujar();
+}
+
+function confirmarFrente(){
+    tifis.frenteOK=true;
+    dibujar();
+}
+
+function confirmarAtras(){
+    tifis.atrasOK=true;
+    dibujar();
+}
+
+function confirmarIzq(){
+    tifis.izqOK=true;
+    dibujar();
+}
+
+function confirmarDer(){
+    tifis.derOK=true;
+    dibujar();
+}
+
+function confirmarLiz(){
+    liz.lizOK=true;
+    dibujar();
+}
+
+function dibujar()
+{
+if(fondo.imagenOK==true){
+    tablero.drawImage(fondo.imagen,0,0);
+ }
+
+if(liz.lizOK){
+    tablero.drawImage(liz.liz,liz.x,liz.y);
+ }
+
+let tifiDibujo = tifis.frente;
+
+if(tifis.frenteOK && tifis.atrasOK && tifis.derOK && tifis.izqOK){
+
+    if(direccion ==teclas.UP)
+    {
+        tifiDibujo=tifis.atras;
+    }
+
+ if(direccion ==teclas.DOWN )
+    {
+        tifiDibujo=tifis.frente;
+    }
+
+    if(direccion ==teclas.LEFT)
+    {
+        tifiDibujo=tifis.izq;
+    }
+
+    if(direccion ==teclas.RIGHT)
+    {
+        tifiDibujo=tifis.der;
+    }
+    tablero.drawImage(tifiDibujo,tifis.x,tifis.y);
+
+ }
+}
+	</script>
+	<style type="text/css">
+		body
+		{
+		    background: black;
+		    text-align: center;
+		}
+    </style>
+</head>
+<body>
+	<canvas id="campo" width="500" height="500"></canvas>
+	<script type="text/javascript">
+		inicio();
+	</script>
+</body>
+</html>
