@@ -1,20 +1,19 @@
 //Comprobamos que encontramos un elemento y podemos extraer su contexto con getContext(), que indica compatibilidad con canvas
-function cargaContextoCanvas(idCanvas) {
+function cargaContextoCanvas(idCanvas){
     let elemento = document.getElementById(idCanvas);
-    if (elemento && elemento.getContext) {
+    if (elemento && elemento.getContext){
         let contexto = elemento.getContext('2d');
-        if (contexto) {
+        if(contexto){
             return contexto;
         }
     }
-    return FALSE;
+    return false;
 }
 
-let contexto;
 
-window.onload = function () {
+window.addEventListener("DOMContentLoaded",function(){
     //Camino relleno sin cierre explícito
-    contexto = cargaContextoCanvas('micanvas1');
+    let contexto = cargaContextoCanvas('micanvas1');
     if (contexto) {
         contexto.beginPath();
         contexto.moveTo(50,15);
@@ -25,7 +24,6 @@ window.onload = function () {
         contexto.lineTo(19,69);
         contexto.fill();
     }
-
     //Camino relleno con cierre explícito
     contexto = cargaContextoCanvas('micanvas2');
     if (contexto) {
@@ -40,7 +38,6 @@ window.onload = function () {
         contexto.closePath();
         contexto.fill();
     }
-
     //Camino sin relleno y sin cierre explícito
     contexto = cargaContextoCanvas('micanvas3');
     if (contexto) {
@@ -54,7 +51,6 @@ window.onload = function () {
         contexto.lineTo(19,69);
         contexto.stroke();
     }
-
     //Camino sin relleno y con cierre explícito
     contexto = cargaContextoCanvas('micanvas4');
     if (contexto) {
@@ -69,7 +65,4 @@ window.onload = function () {
         contexto.closePath();
         contexto.stroke();
     }
-
-
-}
-
+});

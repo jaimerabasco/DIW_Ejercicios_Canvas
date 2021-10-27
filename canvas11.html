@@ -1,132 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Ejemplo 11 de Canvas</title>
-<script type="text/javascript">
-	var contexto;
-	window.onload = function(){	
-		//Recibimos o Recogemos el elemento canvas
-		contexto = cargaContextoCanvas('micanvas');
-			if (contexto) {
-				//Cuadrado
-				contexto.strokeRect(0, 0, 300, 300);
-				contexto.fillStyle = 'rgb(0, 0, 0)';
-
-				//Sombra Vaso
-				contexto.fillStyle='gray';
-				contexto.beginPath();
-				contexto.moveTo(175, 262);
-				contexto.quadraticCurveTo(142, 273, 115, 258);
-				contexto.bezierCurveTo(60, 268, 155, 286, 175, 262);
-				contexto.fill();
-
-				//Base Vaso
-				contexto.beginPath();
-      			contexto.moveTo(110.5, 260);
-      			contexto.bezierCurveTo(110.5, 260, 140, 246, 176.5, 260);
-				contexto.stroke();
-
-				//Vaso
-				contexto.beginPath();
-				contexto.moveTo(194, 79);
-				contexto.lineTo(95, 79);
-				contexto.bezierCurveTo(96, 98, 95, 102, 95, 102);
-				contexto.bezierCurveTo(90, 125, 100, 150, 100, 150);
-				contexto.bezierCurveTo(111, 184.5, 110, 262, 110, 262);
-				contexto.bezierCurveTo(143, 274, 175, 262, 175, 262);
-				contexto.bezierCurveTo(177, 188, 191, 145, 191, 145);
-				contexto.bezierCurveTo(191, 145, 199, 121.5, 194, 102.5);
-				contexto.lineTo(194, 79);
-				contexto.stroke();
-
-
-				//Relleno de coca cola
-				let lineGrad = contexto.createLinearGradient(150, 81, 150, 268);
-				lineGrad.addColorStop(0, '#fff');
-				lineGrad.addColorStop(0.05, '#450c0c');
-				lineGrad.addColorStop(0.6, '#874040');
-				lineGrad.addColorStop(1, 'rgba(202, 147, 147, 0.6)');
-				contexto.fillStyle = lineGrad;
-				contexto.fill();
-
-
-				//Primera burbuja
-				contexto.strokeStyle = 'rgba(255, 255, 255, 0.5)';
-				contexto.lineWidth = 2;
-				let radGrad =	contexto.createRadialGradient(116, 107, 1, 120, 110, 10);
-				radGrad.addColorStop(0, 'white');
-				radGrad.addColorStop(0.9, 'rgba(255, 255, 255, 0)');
-				contexto.fillStyle = radGrad;
-				contexto.beginPath();
-				contexto.arc(120, 110, 10, 0, Math.PI * 2, false);
-				contexto.fill();
-				contexto.stroke();
-
-
-				//Segunda burbuja
-				radGrad = contexto.createRadialGradient(164, 140, 1, 168, 143, 8);
-				radGrad.addColorStop(0, 'white');
-				radGrad.addColorStop(0.9, 'rgba(255, 255, 255, 0)');
-				contexto.fillStyle = radGrad;
-				contexto.beginPath();
-				contexto.arc(168, 143, 8, 0, Math.PI * 2, false);
-				contexto.fill();
-				contexto.stroke();
-
-				//Tercera burbuja
-				radGrad = contexto.createRadialGradient(127, 185, 1, 130, 188, 6);
-				radGrad.addColorStop(0, 'white');
-				radGrad.addColorStop(0.9, 'rgba(255, 255, 255, 0)');
-				contexto.fillStyle = radGrad;
-				contexto.beginPath();
-				contexto.arc(130, 188, 6, 0, Math.PI * 2, false);
-				contexto.fill();
-				contexto.stroke();
-				}
-
-
-
-		} 
-	//Recibe un identificador del elemento canvas y carga el canvas
-	//Devueve el contexto del canvas o FALSE si no ha podido conseguise
-	function cargaContextoCanvas(idCanvas){
-		let elemento = document.getElementById(idCanvas);
-		if(elemento && elemento.getContext){
-			let contexto = elemento.getContext('2d');
-			if(contexto){
-				return contexto;
-			}
-		}
-		return FALSE;
-	}
-
-	function aleatorio(inferior,superior){
-		var numPosibilidades = superior - inferior;
-		var aleat = Math.floor(Math.random() * numPosibilidades);
-		return parseInt(inferior) + aleat;
-	}
-
-	function color_aleatorio(){
-		return "rgb(" + aleatorio(0,255) + "," + aleatorio(0,255) + "," + aleatorio(0,255) + ")";
-		//rgb(255,100,0)
-	}
-
-	function cuadrados_aleatorios(){
-		for(i=0;i<=300;i+=10)
-			for(j=0;j<=250;j+=10){					
-				contexto.fillStyle = color_aleatorio();
-				contexto.fillRect(i,j,10,10);
-			}
-	}
-
-
-</script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio 11 Canvas</title>
+    <script src="canvas11.js"></script>
 </head>
 <body>
-	<canvas id="micanvas" width="1000" height="1000">
-		No soporta la APi de HTML5 de Canvas
-	</canvas>
+    <canvas id="micanvas" width="2000px" height="2000px">
+        Su navegador no soporta canvas
+    </canvas>
 </body>
 </html>

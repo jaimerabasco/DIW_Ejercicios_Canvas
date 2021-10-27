@@ -1,38 +1,43 @@
 //Comprobamos que encontramos un elemento y podemos extraer su contexto con getContext(), que indica compatibilidad con canvas
-function cargaContextoCanvas(idCanvas) {
+function cargaContextoCanvas(idCanvas){
     let elemento = document.getElementById(idCanvas);
-    if (elemento && elemento.getContext) {
+    if (elemento && elemento.getContext){
         let contexto = elemento.getContext('2d');
-        if (contexto) {
+        if(contexto){
             return contexto;
         }
     }
-    return FALSE;
+    return false;
 }
 
-window.onload = function () {
-    //Recibimos el elemento canvas
+window.addEventListener("DOMContentLoaded",function(){
     let contexto = cargaContextoCanvas('micanvas');
     if (contexto) {
-        //cambio el color de relleno de los rectángulos
+        //contexto.fillStyle = '#6634A2';
+        //contexto.fillRect(100,100,50,50);
+        //contexto.fillStyle = 'rgba(200,100,50,0.5)';
+        //contexto.fillRect(10,10,120,130);
+
         contexto.fillStyle = 'rgba(255,0,0,0.5)';
-        for (i = 0; i <= 500; i += 10) {
-            // fillRect(x,y,width,height) dibuja un rectángulo relleno de color
-            contexto.fillRect(i, i, 10, 10);
+        for(i=0;i <= 500; i+=10){
+            contexto.fillRect(i,i,10,10);
         }
-        //cambio el color de la línea de borde del rectángulo
-        contexto.strokeStyle = 'rgba(70%,50%,20%,0.5)';
-        for (i = 500; i >= 0; i -= 10) {
-            //strokeRect(x,y,width,height) dibuja el borde de un rectángulo
-            contexto.strokeRect(i, 500 - i, 10, 10);
+        contexto.fillStyle = 'rgba(70%,50%,20%,0.5)';
+        for(i=500;i >= 0; i-=10){
+            contexto.fillRect(i,500-i,10,10);
         }
+        contexto.strokeStyle = 'rgba(100,255,40,0.8)';
+        for(i=0;i <= 500; i+=20){
+            contexto.strokeRect(250,i,10,10);
+        }
+        document.getElementById('borrar').addEventListener("click",borrar_parcial);
     }
-}
+});
 
-function borrar_parcial() {
+
+function borrar_parcial(){
     let contexto = cargaContextoCanvas('micanvas');
-    if (contexto) {
-        //clearRect(x,y,width,height) borra un área rectangular del canvas dejándola transparente
-        contexto.clearRect(60, 0, 42, 150);
+    if(contexto){
+        contexto.clearRect(60,0,400,400);
     }
 }
