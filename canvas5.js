@@ -10,7 +10,6 @@ function cargaContextoCanvas(idCanvas){
     return false;
 }
 
-
 window.addEventListener("DOMContentLoaded",function(){
     let contexto = cargaContextoCanvas('micanvas');
     if (contexto) {

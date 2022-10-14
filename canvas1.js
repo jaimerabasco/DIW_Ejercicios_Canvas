@@ -17,6 +17,5 @@ window.addEventListener("DOMContentLoaded",function(){
         contexto.fillRect(100,100,50,50);
         contexto.fillStyle = 'rgba(200,100,50,0.5)';
         contexto.fillRect(10,10,120,130);
-
     }
 });

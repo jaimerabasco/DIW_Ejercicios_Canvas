@@ -24,6 +24,7 @@ window.addEventListener("DOMContentLoaded",function(){
         contexto.lineTo(19,69);
         contexto.fill();
     }
+
     //Camino relleno con cierre explícito
     contexto = cargaContextoCanvas('micanvas2');
     if (contexto) {
@@ -38,6 +39,7 @@ window.addEventListener("DOMContentLoaded",function(){
         contexto.closePath();
         contexto.fill();
     }
+
     //Camino sin relleno y sin cierre explícito
     contexto = cargaContextoCanvas('micanvas3');
     if (contexto) {
@@ -51,6 +53,7 @@ window.addEventListener("DOMContentLoaded",function(){
         contexto.lineTo(19,69);
         contexto.stroke();
     }
+    
     //Camino sin relleno y con cierre explícito
     contexto = cargaContextoCanvas('micanvas4');
     if (contexto) {

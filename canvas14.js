@@ -32,7 +32,6 @@ function dibujar(){
      
 }
 
-//window.onload = function(){
 window.addEventListener("DOMContentLoaded",function(){
     let contexto = cargaContextoCanvas('micanvas');
     

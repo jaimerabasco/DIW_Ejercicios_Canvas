@@ -22,6 +22,7 @@ window.addEventListener("DOMContentLoaded",function(){
         contexto.lineTo(50,125);
         contexto.lineTo(25,65);
         contexto.fill();
+        
         //rombo 2
         contexto.fillStyle='rgba(255,0,0,0.2)';
         contexto.beginPath();

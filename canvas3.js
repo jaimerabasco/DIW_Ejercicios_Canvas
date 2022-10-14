@@ -14,7 +14,7 @@ function cargaContextoCanvas(idCanvas){
 window.addEventListener("DOMContentLoaded",function(){
     let contexto = cargaContextoCanvas('micanvas');
     if (contexto) {
-        //cuadradosAleatorios();
+        //cuadradosAleatorios(); 
         setInterval(cuadradosAleatorios,500,contexto);
     }
 });

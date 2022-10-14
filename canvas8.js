@@ -1,4 +1,4 @@
-//Comprobamos que encontramos un elemento y podemos extraer su contexto con getContext(), que indica compatibilidad con canvas
+// Comprobamos que encontramos un elemento y podemos extraer su contexto con getContext(), que indica compatibilidad con canvas
 function cargaContextoCanvas(idCanvas){
     let elemento = document.getElementById(idCanvas);
     if (elemento && elemento.getContext){
@@ -10,22 +10,20 @@ function cargaContextoCanvas(idCanvas){
     return false;
 }
 
-
-//window.onload = function(){
-window.addEventListener("DOMContentLoaded",function(){
+window.addEventListener('DOMContentLoaded', function(){
     let contexto = cargaContextoCanvas('micanvas');
-    if (contexto) {
-       let img = new Image();
-       img.src='cabecera.jpg';
-       img.onload = function(){
-           //Imagen Original
-           contexto.drawImage(img,0,0);
-           //Imagen escalada 1
-           contexto.drawImage(img,0,250,400,100);
-           //Imagen 2 Recortada
-           contexto.drawImage(img,0,0,100,239,0,360,100,239);
-           //Imagen Mezquita Recortada y escalada
-           contexto.drawImage(img,200,0,370,200,0,600,670,400);
-       }
+    if(contexto){
+        let img = new Image();
+        img.src = 'cabecera.jpg';
+        img.addEventListener('load', function(){
+            //Imagen original
+            contexto.drawImage(img,0,0);
+            //Imagen escalada 1
+            contexto.drawImage(img,0,250,400,100);
+            //Imagen recortada
+            contexto.drawImage(img,0,0,100,239,0,360,100,239);
+            //Imagen Mezquita recortada y escalada
+            contexto.drawImage(img,200,0,370,200,0,600,740,400);
+        });   
     }
 });
