@@ -12,7 +12,6 @@ function cargaContextoCanvas(idCanvas) {
 
 let contexto;
 
-//window.onload = function () {
 window.addEventListener("DOMContentLoaded",function(){
     //Recibimos el elemento canvas
     contexto = cargaContextoCanvas('micanvas');

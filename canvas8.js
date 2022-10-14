@@ -11,14 +11,13 @@ function cargaContextoCanvas(idCanvas){
 }
 
 
-//window.onload = function(){
-window.addEventListener("DOMContentLoaded",function(){
+window.addEventListener('DOMContentLoaded', function(){
     let contexto = cargaContextoCanvas('micanvas');
-    if (contexto) {
-       let img = new Image();
-       img.src='cabecera.jpg';
-       img.onload = function(){
-           //Imagen Original
+    if(contexto){
+        let img = new Image();
+        img.src = 'donuts.png';
+        img.addEventListener('load', function(){
+            //Imagen Original
            contexto.drawImage(img,0,0);
            //Imagen escalada 1
            contexto.drawImage(img,0,250,400,100);
@@ -26,6 +25,6 @@ window.addEventListener("DOMContentLoaded",function(){
            contexto.drawImage(img,0,0,100,239,0,360,100,239);
            //Imagen Mezquita Recortada y escalada
            contexto.drawImage(img,200,0,370,200,0,600,670,400);
-       }
+        });   
     }
 });

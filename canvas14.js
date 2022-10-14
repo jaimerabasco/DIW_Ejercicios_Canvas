@@ -10,7 +10,7 @@ function cargaContextoCanvas(idCanvas){
     return false;
 }
 
-let x=0, y=30, velocidad=2;
+let x=0, y=30, velocidad=5;
 
 function dibujar(){
     let contexto = cargaContextoCanvas('micanvas');
@@ -32,7 +32,6 @@ function dibujar(){
      
 }
 
-//window.onload = function(){
 window.addEventListener("DOMContentLoaded",function(){
     let contexto = cargaContextoCanvas('micanvas');
     
